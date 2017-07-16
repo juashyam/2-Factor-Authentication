@@ -3,11 +3,11 @@ Two-Factor Authentication for Magento 2 Admin Login
 
 ## Getting Started
 
-Magento 2 Two-Factor Authentication will protect our store from insecure Internet connections (wifi, mobile), key loggers, and more.
+Magento 2 Two-Factor Authentication will protect our Magento store from insecure Internet connections.
 
-Every time we login into your Web site there is a chance that someone is sniffing or logging the password, which can later be used to login to your store and wreak havoc.
+Every time we login there is a chance that someone is sniffing or logging the password, which can later be used to login to your store.
 
-We can protect our store from these attacks by using our advanced Magento Two-Factor Authentication, which uses Google authenticator and your smart phone in order to authenticate your admin session.
+You can protect our store from these type of attacks by using our advanced Magento Two-Factor Authentication, which uses Google authenticator and your smart phone in order to authenticate your admin session.
 
 ### Prerequisites
 [Google Authenticator App](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&hl=en)
