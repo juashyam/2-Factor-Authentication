@@ -1,2 +1,21 @@
-# 2-Factor-Authentication
-Google 2 Factor Authentication for Magento 2
+# Project Title
+Magento 2 Two-Factor Authentication
+
+## Getting Started
+
+Magento 2 Two-Factor Authentication will protect our store from insecure Internet connections (wifi, mobile), key loggers, and more.
+
+Every time we login into your Web site there is a chance that someone is sniffing or logging the password, which can later be used to login to your store and wreak havoc.
+
+We can protect our store from these attacks by using our advanced Magento Two-Factor Authentication, which uses Google authenticator and your smart phone in order to authenticate your admin session.
+
+### Prerequisites
+[Google Authenticator App](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&hl=en)
+
+## Authors
+
+* **Shyam Kumar**
+
+## License
+
+This project is licensed under the MIT License

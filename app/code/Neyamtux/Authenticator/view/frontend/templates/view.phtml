@@ -1,0 +1,27 @@
+<div class="login-container">
+    <img src="<?php /* @escapeNotVerified */ echo $block->getQRCodeUrl(); ?>" alt="Neyamtux Authenticator">
+    <div class="block block-customer-login" style="width: 48%">
+        <div class="block-content">
+            <form class="form contact" action="<?php /* @escapeNotVerified */ echo $block->getFormAction(); ?>" method="post" data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>">
+                <input type="hidden" name="secret" value="<?php /* @escapeNotVerified */ echo $block->getSecretCode(); ?>" />
+                <fieldset class="fieldset">
+                    <legend class="legend"><span><?php /* @escapeNotVerified */ echo __('Google 2Step Authentication') ?></span></legend><br />
+                    <div class="field name required">
+                        <label class="label" for="code"><span><?php /* @escapeNotVerified */ echo __('Authentication Code') ?></span></label>
+                        <div class="control">
+                            <input name="code" id="code" title="<?php /* @escapeNotVerified */ echo __('Authentication Code') ?>" value="" class="input-text" type="text" data-validate="{required:true}"/>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="actions-toolbar">
+                    <div class="primary">
+                        <input type="hidden" name="hideit" id="hideit" value="" />
+                        <button type="submit" title="<?php /* @escapeNotVerified */ echo __('Authenticate') ?>" class="action submit primary">
+                            <span><?php /* @escapeNotVerified */ echo __('Authenticate') ?></span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

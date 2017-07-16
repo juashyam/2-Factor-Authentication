@@ -1,0 +1,16 @@
+<div class="admin__field _required field-2factor">
+    <label for="qr_code" class="admin__field-label">
+        <span><?php /* @escapeNotVerified */ echo __('Authentication Code') ?></span>
+    </label>
+    <div class="admin__field-control">
+        <input id="qr_code"
+               class="admin__control-text"
+               type="password"
+               name="login[qr_code]"
+               data-validate="{required:true}"
+               value=""
+               placeholder="<?php /* @escapeNotVerified */ echo __('Authentication Code') ?>"
+               autocomplete="off"
+            />
+    </div>
+</div>

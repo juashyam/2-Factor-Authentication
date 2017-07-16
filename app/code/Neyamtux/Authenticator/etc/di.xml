@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\User\Block\User\Edit\Tabs" type="Neyamtux\Authenticator\Block\Adminhtml\User\Edit\Tabs"/>
+    <preference for="Magento\Backend\App\Action\Plugin\Authentication" type="Neyamtux\Authenticator\App\Action\Plugin\Authentication"/>
+</config>
