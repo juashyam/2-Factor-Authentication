@@ -12,6 +12,10 @@ We can protect our store from these attacks by using our advanced Magento Two-Fa
 ### Prerequisites
 [Google Authenticator App](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&hl=en)
 
+## Demo
+{Magento Store URL}/authenticator
+![Demo](https://image.prntscr.com/image/gSZmYoEgRRyAu_djujkAYQ.png)
+
 ## Authors
 
 * **Shyam Kumar**
