@@ -1,5 +1,5 @@
 # Project Title
-Magento 2 Two-Factor Authentication
+Two-Factor Authentication for Magento 2 Admin Login
 
 ## Getting Started
 
@@ -12,8 +12,11 @@ We can protect our store from these attacks by using our advanced Magento Two-Fa
 ### Prerequisites
 [Google Authenticator App](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&hl=en)
 
-## Demo
+## Fun Demo
+It authenticates only Admin Login however there is a frontend demo as well.
+
 {Magento Store URL}/authenticator
+
 ![Demo](https://image.prntscr.com/image/gSZmYoEgRRyAu_djujkAYQ.png)
 
 ## Authors
