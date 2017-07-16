@@ -1,5 +1,5 @@
-# Project Title
-Two-Factor Authentication for Magento 2 Admin Login
+# Two Factor Authentication
+Advanced Magento Two-Factor Authentication, which uses Google authenticator and your smart phone in order to authenticate your admin session
 
 ## Getting Started
 
