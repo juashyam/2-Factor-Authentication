@@ -1,4 +1,7 @@
 # Two Factor Authentication
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/2ace12e6ce264d9d801a41d500b7575f)](https://www.codacy.com/app/neyamtux/2-Factor-Authentication?utm_source=github.com&utm_medium=referral&utm_content=neyamtux/2-Factor-Authentication&utm_campaign=badger)
+
 Advanced Magento Two-Factor Authentication, which uses Google authenticator and your smart phone in order to authenticate your admin session
 
 ## Getting Started
