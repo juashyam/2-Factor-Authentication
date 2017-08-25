@@ -1,6 +1,8 @@
 # Two Factor Authentication
 Advanced Magento Two-Factor Authentication, which uses Google authenticator and your smart phone in order to authenticate your admin session
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/2ace12e6ce264d9d801a41d500b7575f)](https://www.codacy.com/app/neyamtux/2-Factor-Authentication?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=neyamtux/2-Factor-Authentication&amp;utm_campaign=Badge_Grade)
+
 ## Getting Started
 
 Magento 2 Two-Factor Authentication will protect our Magento store from insecure Internet connections.
