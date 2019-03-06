@@ -15,6 +15,22 @@ You can protect our store from these type of attacks by using our advanced Magen
 ### Prerequisites
 [Google Authenticator App](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&hl=en)
 
+### Installation
+
+```
+composer require juashyam/authenticator
+php bin/magento module:enable Neyamtux_Authenticator
+php bin/magento setup:upgrade
+```
+
+Please install & enable [Elgentos_Frontend2FA](https://github.com/elgentos/frontend2fa) for frontend 2FA.
+
+```
+composer require elgentos/frontend2fa
+php bin/magento module:enable Elgentos_Frontend2FA
+php bin/magento setup:upgrade
+```
+
 ## Fun Demo
 It authenticates only Admin Login however there is a frontend demo as well.
 
