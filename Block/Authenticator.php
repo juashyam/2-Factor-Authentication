@@ -6,6 +6,10 @@
  */
 namespace Neyamtux\Authenticator\Block;
 
+use Magento\Catalog\Model\Session;
+use Magento\Framework\View\Element\Template\Context;
+use Neyamtux\Authenticator\Lib\PHPGangsta\GoogleAuthenticator;
+
 class Authenticator extends \Magento\Framework\View\Element\Template
 {
     const SESSION_KEY = 'google_authentication';
@@ -13,36 +17,36 @@ class Authenticator extends \Magento\Framework\View\Element\Template
     /**
      * Google Authenticator
      *
-     * @var /Neyamtux\Authenticator\Lib\PHPGangsta $_googleAuthenticator
+     * @var GoogleAuthenticator $_googleAuthenticator
      */
-     protected $_googleAuthenticator = null;
-
-     /**
-      * Google Secret
-      *
-      * @var string $_googleSecret
-      */
-     protected $_googleSecret = null;
-
-     /**
-      * Catalog Session
-      *
-      * @var \Magento\Catalog\Model\Session $session
-      */
-      protected $_session = null;
+    protected $_googleAuthenticator = null;
 
     /**
-     * @param Template\Context $context
+     * Google Secret
+     *
+     * @var string $_googleSecret
+     */
+    protected $_googleSecret = null;
+
+    /**
+     * Catalog Session
+     *
+     * @var Session $session
+     */
+    protected $_session = null;
+
+    /**
+     * @param Context $context
      * @param GoogleAuthenticator $googleAuthenticator
-     * @param \Magento\Catalog\Model\Session $session
+     * @param Session $session
      * @param array $data
      */
     public function __construct(
-        \Magento\Framework\View\Element\Template\Context $context,
-        \Neyamtux\Authenticator\Lib\PHPGangsta\GoogleAuthenticator $googleAuthenticator,
-        \Magento\Catalog\Model\Session $session,
-        array $data = [])
-    {
+        Context $context,
+        GoogleAuthenticator $googleAuthenticator,
+        Session $session,
+        array $data = []
+    ) {
         $this->_googleAuthenticator = $googleAuthenticator;
         $this->_session = $session;
         parent::__construct($context, $data);
@@ -79,6 +83,8 @@ class Authenticator extends \Magento\Framework\View\Element\Template
     /**
      * Gets session for secret key
      *
+     * @param $key
+     * @param bool $remove
      * @return string
      */
     public function getSessionData($key, $remove = false)
@@ -109,6 +115,8 @@ class Authenticator extends \Magento\Framework\View\Element\Template
     /**
      * Authenticates QR code
      *
+     * @param $secret
+     * @param $code
      * @return string
      */
     public function authenticateQRCode($secret, $code)

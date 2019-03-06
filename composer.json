@@ -1,0 +1,29 @@
+{
+    "name": "neyamtux/authenticator",
+    "description": "Magento 2 Backend 2FA implementation",
+    "require": {
+        "php": "~5.5.0|~5.6.0|~7.0.0|~7.1.0|~7.2.0|~7.3.0",
+        "magento/magento-composer-installer": "*"
+    },
+    "type": "magento2-module",
+    "version": "0.0.1",
+    "license": [
+        "OSL-3.0"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Neyamtux\\Authenticator\\": ""
+        }
+    },
+    "extra": {
+        "map": [
+            [
+                "*",
+                "Neyamtux/Authenticator"
+            ]
+        ]
+    }
+}

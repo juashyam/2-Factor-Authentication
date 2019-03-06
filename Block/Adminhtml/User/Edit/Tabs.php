@@ -6,35 +6,41 @@
  */
 namespace Neyamtux\Authenticator\Block\Adminhtml\User\Edit;
 
+use Magento\Backend\Block\Template\Context;
+use Magento\Backend\Model\Auth\Session;
+use Magento\Framework\Json\EncoderInterface;
+use Neyamtux\Authenticator\Helper\Data;
+
 class Tabs extends \Magento\User\Block\User\Edit\Tabs
 {
     /**
      * Authenticator Helper
      *
-     * @var \Neyamtux\Authenticator\Helper\Data
+     * @var Data
      */
-     protected $helper;
+    protected $helper;
 
-     /**
-      * @param \Magento\Backend\Block\Template\Context $context
-      * @param \Magento\Framework\Json\EncoderInterface $jsonEncoder
-      * @param \Magento\Backend\Model\Auth\Session $authSession
-      * @param \Neyamtux\Authenticator\Helper\Data $helper
-      * @param array $data
-      */
-     public function __construct(
-         \Magento\Backend\Block\Template\Context $context,
-         \Magento\Framework\Json\EncoderInterface $jsonEncoder,
-         \Magento\Backend\Model\Auth\Session $authSession,
-         \Neyamtux\Authenticator\Helper\Data $helper,
+    /**
+     * @param Context $context
+     * @param EncoderInterface $jsonEncoder
+     * @param Session $authSession
+     * @param Data $helper
+     * @param array $data
+     */
+    public function __construct(
+         Context $context,
+         EncoderInterface $jsonEncoder,
+         Session $authSession,
+         Data $helper,
          array $data = []
      ) {
-         parent::__construct($context, $jsonEncoder, $authSession, $data);
-         $this->helper = $helper;
-     }
+        parent::__construct($context, $jsonEncoder, $authSession, $data);
+        $this->helper = $helper;
+    }
 
     /**
      * @return $this
+     * @throws \Magento\Framework\Exception\LocalizedException
      */
     protected function _beforeToHtml()
     {
@@ -48,7 +54,7 @@ class Tabs extends \Magento\User\Block\User\Edit\Tabs
                     'content' =>$this->getLayout()->createBlock('Neyamtux\Authenticator\Block\Adminhtml\User\Edit\Tab\Authentication')->toHtml()
                 ],
                 'roles_section'
-            );            
+            );
         }
 
         return parent::_beforeToHtml();

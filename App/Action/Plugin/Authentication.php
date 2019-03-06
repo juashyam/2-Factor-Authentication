@@ -6,49 +6,59 @@
  */
 namespace Neyamtux\Authenticator\App\Action\Plugin;
 
-use Magento\Framework\Exception\AuthenticationException;
+use Magento\Backend\App\BackendAppList;
+use Magento\Backend\Model\Auth;
+use Magento\Backend\Model\UrlInterface;
+use Magento\Framework\App\ActionFlag;
+use Magento\Framework\App\RequestInterface;
+use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Controller\Result\RedirectFactory;
+use Magento\Framework\Data\Form\FormKey\Validator;
+use Magento\Framework\Message\ManagerInterface;
+use Neyamtux\Authenticator\Helper\Data;
+use Neyamtux\Authenticator\Lib\PHPGangsta\GoogleAuthenticator;
 
 class Authentication extends \Magento\Backend\App\Action\Plugin\Authentication
 {
     /**
      * Authenticator Helper
      *
-     * @var \Neyamtux\Authenticator\Helper\Data
+     * @var Data
      */
-     protected $helper;
+    protected $helper;
 
     /**
      * Google Authenticator
      *
-     * @var \Neyamtux\Authenticator\Lib\PHPGangsta\GoogleAuthenticator
+     * @var GoogleAuthenticator
      */
-     protected $googleAuthenticator;
+    protected $googleAuthenticator;
 
     /**
-     * @param \Magento\Backend\Model\Auth $auth
-     * @param \Magento\Backend\Model\UrlInterface $url
-     * @param \Magento\Framework\App\ResponseInterface $response
-     * @param \Magento\Framework\App\ActionFlag $actionFlag
-     * @param \Magento\Framework\Message\ManagerInterface $messageManager
-     * @param \Magento\Backend\Model\UrlInterface $backendUrl
-     * @param \Magento\Framework\Controller\Result\RedirectFactory $resultRedirectFactory
-     * @param \Magento\Backend\App\BackendAppList $backendAppList
-     * @param \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator
-     * @param \Neyamtux\Authenticator\Helper\Data $helper
-     * @param \Neyamtux\Authenticator\Lib\PHPGangsta\GoogleAuthenticator $googleAuthenticator
+     * @param Auth $auth
+     * @param UrlInterface $url
+     * @param ResponseInterface $response
+     * @param ActionFlag $actionFlag
+     * @param ManagerInterface $messageManager
+     * @param UrlInterface $backendUrl
+     * @param RedirectFactory $resultRedirectFactory
+     * @param BackendAppList $backendAppList
+     * @param Validator $formKeyValidator
+     * @param Data $helper
+     * @param GoogleAuthenticator $googleAuthenticator
      */
     public function __construct(
-        \Magento\Backend\Model\Auth $auth,
-        \Magento\Backend\Model\UrlInterface $url,
-        \Magento\Framework\App\ResponseInterface $response,
-        \Magento\Framework\App\ActionFlag $actionFlag,
-        \Magento\Framework\Message\ManagerInterface $messageManager,
-        \Magento\Backend\Model\UrlInterface $backendUrl,
-        \Magento\Framework\Controller\Result\RedirectFactory $resultRedirectFactory,
-        \Magento\Backend\App\BackendAppList $backendAppList,
-        \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator,
-        \Neyamtux\Authenticator\Helper\Data $helper,
-        \Neyamtux\Authenticator\Lib\PHPGangsta\GoogleAuthenticator $googleAuthenticator
+        Auth $auth,
+        UrlInterface $url,
+        ResponseInterface $response,
+        ActionFlag $actionFlag,
+        ManagerInterface $messageManager,
+        UrlInterface $backendUrl,
+        RedirectFactory $resultRedirectFactory,
+        BackendAppList $backendAppList,
+        Validator $formKeyValidator,
+        Data $helper,
+        GoogleAuthenticator $googleAuthenticator
     ) {
         parent::__construct(
             $auth,
@@ -68,10 +78,10 @@ class Authentication extends \Magento\Backend\App\Action\Plugin\Authentication
     /**
      * Performs login, if user submitted login form
      *
-     * @param \Magento\Framework\App\RequestInterface $request
+     * @param RequestInterface $request
      * @return bool
      */
-    protected function _performLogin(\Magento\Framework\App\RequestInterface $request)
+    protected function _performLogin(RequestInterface $request)
     {
         $postLogin = $request->getPost('login');
         $outputValue = parent::_performLogin($request);
@@ -96,6 +106,9 @@ class Authentication extends \Magento\Backend\App\Action\Plugin\Authentication
     /**
      * Authenticates QR code
      *
+     * @param $secret
+     * @param $code
+     * @param int $clockTolerance
      * @return string
      */
     private function _authenticateQRCode($secret, $code, $clockTolerance = 2)

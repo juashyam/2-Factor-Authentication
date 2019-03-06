@@ -6,22 +6,25 @@
  */
 namespace Neyamtux\Authenticator\Controller\Index;
 
+use Magento\Framework\App\Action\Context;
+use Magento\Framework\View\LayoutFactory;
+
 class Post extends \Magento\Framework\App\Action\Action
 {
     /**
      * Layout Factory
      *
-     * @var \Magento\Framework\View\LayoutFactory $layoutFactory
+     * @var LayoutFactory $layoutFactory
      */
-     protected $_layoutFactory = null;
+    protected $_layoutFactory = null;
 
     /**
-     * @param \Magento\Framework\App\Action\Context $context
-     * @param \Magento\Framework\View\LayoutFactory $layoutFactory
+     * @param Context $context
+     * @param LayoutFactory $layoutFactory
      */
     public function __construct(
-        \Magento\Framework\App\Action\Context $context,
-        \Magento\Framework\View\LayoutFactory $layoutFactory
+        Context $context,
+        LayoutFactory $layoutFactory
     ) {
         $this->_layoutFactory = $layoutFactory;
         parent::__construct($context);

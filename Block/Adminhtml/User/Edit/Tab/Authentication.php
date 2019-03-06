@@ -1,6 +1,13 @@
 <?php
 namespace Neyamtux\Authenticator\Block\Adminhtml\User\Edit\Tab;
 
+use Magento\Backend\Block\Template\Context;
+use Magento\Backend\Model\Auth\Session;
+use Magento\Framework\Data\FormFactory;
+use Magento\Framework\Locale\ListsInterface;
+use Magento\Framework\Registry;
+use Neyamtux\Authenticator\Lib\PHPGangsta\GoogleAuthenticator;
+
 /**
  * Authentication edit form authentication tab
  *
@@ -11,44 +18,45 @@ class Authentication extends \Magento\Backend\Block\Widget\Form\Generic
     const CURRENT_USER_PASSWORD_FIELD = 'current_password';
 
     /**
-     * @var \Magento\Backend\Model\Auth\Session
+     * @var Session
      */
     protected $_authSession;
 
     /**
-     * @var \Magento\Framework\Locale\ListsInterface
+     * @var ListsInterface
      */
     protected $_LocaleLists;
 
     /**
      * Google Authenticator
      *
-     * @var /Neyamtux\Authenticator\Lib\PHPGangsta $_googleAuthenticator
+     * @var GoogleAuthenticator $_googleAuthenticator
      */
-     protected $_googleAuthenticator = null;
-
-     /**
-      * Google Secret
-      *
-      * @var string $_googleSecret
-      */
-     protected $_googleSecret = null;
+    protected $_googleAuthenticator = null;
 
     /**
-     * @param \Magento\Backend\Block\Template\Context $context
-     * @param \Magento\Framework\Registry $registry
-     * @param \Magento\Framework\Data\FormFactory $formFactory
-     * @param \Magento\Backend\Model\Auth\Session $authSession
-     * @param \Magento\Framework\Locale\ListsInterface $localeLists
+     * Google Secret
+     *
+     * @var string $_googleSecret
+     */
+    protected $_googleSecret = null;
+
+    /**
+     * @param Context $context
+     * @param Registry $registry
+     * @param FormFactory $formFactory
+     * @param Session $authSession
+     * @param ListsInterface $localeLists
+     * @param GoogleAuthenticator $googleAuthenticator
      * @param array $data
      */
     public function __construct(
-        \Magento\Backend\Block\Template\Context $context,
-        \Magento\Framework\Registry $registry,
-        \Magento\Framework\Data\FormFactory $formFactory,
-        \Magento\Backend\Model\Auth\Session $authSession,
-        \Magento\Framework\Locale\ListsInterface $localeLists,
-        \Neyamtux\Authenticator\Lib\PHPGangsta\GoogleAuthenticator $googleAuthenticator,
+        Context $context,
+        Registry $registry,
+        FormFactory $formFactory,
+        Session $authSession,
+        ListsInterface $localeLists,
+        GoogleAuthenticator $googleAuthenticator,
         array $data = []
     ) {
         $this->_authSession = $authSession;
@@ -62,6 +70,7 @@ class Authentication extends \Magento\Backend\Block\Widget\Form\Generic
      *
      * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      * @return \Magento\Backend\Block\Widget\Form
+     * @throws \Magento\Framework\Exception\LocalizedException
      */
     protected function _prepareForm()
     {
