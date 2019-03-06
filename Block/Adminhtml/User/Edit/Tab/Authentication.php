@@ -125,6 +125,7 @@ class Authentication extends \Magento\Backend\Block\Widget\Form\Generic
      * Returns QR secret code
      *
      * @return string
+     * @throws \Exception
      */
     protected function getSecretCode()
     {
